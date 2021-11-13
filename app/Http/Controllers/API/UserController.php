@@ -70,7 +70,7 @@ class UserController extends Controller
     public function logout()
     {
         try {
-            
+            Auth::guard('web')->logout();
             Session::flush();
             $success = true;
             $message = 'Successfully logged out';
