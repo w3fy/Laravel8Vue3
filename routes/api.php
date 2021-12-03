@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('login', [UserController::class, 'login']);
 Route::post('register', [UserController::class, 'register']);
-Route::post('logout', [UserController::class, 'logout']);
+Route::post('logout', [UserController::class, 'logout'])->middleware('auth:sanctum');
 
 Route::group(['prefix' => 'books', 'middleware' => 'auth:sanctum'], function () {
     Route::get('/', [BookController::class, 'index']);
