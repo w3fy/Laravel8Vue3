@@ -41,7 +41,6 @@ export default {
     },
     methods: {
         logout(e) {
-            console.log('ss')
             e.preventDefault()
             this.$axios.get('/sanctum/csrf-cookie').then(response => {
                 this.$axios.post('/api/logout')
