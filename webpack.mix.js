@@ -14,5 +14,15 @@ const mix = require('laravel-mix');
 mix.disableSuccessNotifications();
 
 mix.js('resources/js/app.js', 'public/js').version()
-    .vue()
+    .vue({ version: 3 })
+    .webpackConfig((webpack) => {
+        return {
+            plugins: [
+                new webpack.DefinePlugin({
+                    __VUE_OPTIONS_API__: true,
+                    __VUE_PROD_DEVTOOLS__: false,
+                }),
+            ],
+        };
+    })
     .sass('resources/sass/app.scss', 'public/css').version();
